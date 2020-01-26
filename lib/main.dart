@@ -13,7 +13,7 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<Quote> quotes= [
+  List<Quote> quotes1= [
     Quote(author: 'auth1', text:'quote1'),
     Quote(author: 'auth2', text:'quote2'),
     Quote(author: 'auth3', text:'quote3'),
@@ -34,8 +34,15 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quotes){
-          return QuoteCard(quote:quotes);
+        children: quotes1.map((quotes){
+          return QuoteCard(
+              quote:quotes,
+              delete:(){
+                setState(() {
+                  quotes1.remove(quotes);
+                });
+              }
+          );
       }).toList()
 
       ),
